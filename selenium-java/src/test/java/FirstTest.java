@@ -62,4 +62,29 @@ public class FirstTest
         driver.findElement(By.cssSelector("body > div > form > div > div:nth-child(15) > a")).click();
         driver.quit();
     }
+    @Test
+    public void testaya4() {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://formy-project.herokuapp.com/form");
+
+        WebElement E1 = driver.findElement(By.cssSelector("#first-name"));
+        WebElement E2 = driver.findElement(By.cssSelector("#last-name"));
+        WebElement E3 = driver.findElement(By.cssSelector("#job-title"));
+        WebElement E4 = driver.findElement(By.cssSelector("#radio-button-2"));
+
+        E1.sendKeys("Mario");
+        E2.sendKeys("Remon");
+        E3.sendKeys("Student");
+        E4.click();
+
+        assertEquals(E1.getAttribute("value"),"Mario");
+        assertEquals(E2.getAttribute("value"),"Remon");
+        assertEquals(E3.getAttribute("value"),"Student");
+        assertTrue(E4.isSelected());
+        driver.findElement(By.cssSelector("#checkbox-1")).click();
+        driver.findElement(By.cssSelector("#select-menu > option:nth-child(2)")).click();
+        driver.findElement(By.cssSelector("body > div > form > div > div:nth-child(15) > a")).click();
+        driver.quit();
+    }
 }
